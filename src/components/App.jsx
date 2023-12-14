@@ -12,6 +12,11 @@ class App extends Component {
     number: '',
   };
 
+  setFilter = value => {
+    console.log('Filter Value:', value);
+    this.setState({ filter: value });
+  };
+
   addContact = newContact => {
     if (
       this.state.contacts.some(
@@ -57,10 +62,7 @@ class App extends Component {
           <ContactForm addContact={this.addContact} />
 
           <h2>Contactos</h2>
-          <Filter
-            value={filter}
-            onChange={e => this.setFilter(e.target.value)}
-          />
+          <Filter value={filter} onChange={value => this.setFilter(value)} />
           <ContactList
             contacts={filteredContacts}
             onDelete={this.deleteContact}
